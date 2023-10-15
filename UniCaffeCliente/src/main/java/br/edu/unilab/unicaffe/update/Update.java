@@ -10,7 +10,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Properties;
 
-import br.edu.unilab.unicaffe.model.Maquina;
+import br.edu.unilab.unicaffe.view.FrameTelaBloqueio;
 
 /**
  * 
@@ -38,19 +38,33 @@ public class Update {
 		this.configura();
 	}
 
+	public static final int STATUS_UPDATE = 4;
+
 	/**
-	 * Atualiza o próprio atualizador. Tudo acontece em background.
+	 * Inicia processo de atualização do UniCaffé nesta máquina. Baixando nova
+	 * versão do servidor e substituindo no diretório padrão do UniCafféCliente.
 	 */
-	public void iniciaUpdateAtualizador() {
+	public void iniciaUpdate() {
 		Socket conexao;
 		FileOutputStream out;
+
+		FrameTelaBloqueio janela = new FrameTelaBloqueio();
+		janela.statusUpdate();
+		janela.setVisible(true);
+
+		try {
+			Thread.sleep(5000);
+
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		try {
 			conexao = new Socket(this.host, this.porta);
 			PrintStream saida = new PrintStream(conexao.getOutputStream());
 			InputStream in = conexao.getInputStream();
-			saida.println("setStatus(" + Maquina.STATUS_UPDATE_ATUALIZADOR + ")");
+			saida.println("setStatus(" + STATUS_UPDATE + ")");
 			saida.flush();
-			File f1 = new File("./unicafe-update.jar");
+			File f1 = new File("./UniCafeClient.exe");
 			out = new FileOutputStream(f1);
 			int tamanho = 4096;
 			byte[] buffer = new byte[tamanho];
@@ -60,11 +74,23 @@ public class Update {
 			}
 			out.flush();
 			out.close();
+
+			janela.setVisible(false);
+
+
 		} catch (UnknownHostException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+
+		try {
+			Runtime.getRuntime().exec("./UniCafeClient.exe");
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		}
+		
 	}
 
 	/**
