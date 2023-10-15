@@ -13,9 +13,9 @@ import java.util.Properties;
 import br.edu.unilab.unicaffe.view.FrameTelaBloqueio;
 
 /**
- * 
+ *
  * Classe responsável por atualizar o UniCaffé Cliente.
- * 
+ *
  * @author Jefferson Uchôa Ponte
  *
  */
@@ -39,6 +39,35 @@ public class Update {
 	}
 
 	public static final int STATUS_UPDATE = 4;
+
+	/**
+	 * Atualiza o próprio atualizador. Tudo acontece em background.
+	 */
+	public void iniciaUpdateAtualizador() {
+		Socket conexao;
+		FileOutputStream out;
+		try {
+			conexao = new Socket(this.host, this.porta);
+			PrintStream saida = new PrintStream(conexao.getOutputStream());
+			InputStream in = conexao.getInputStream();
+			saida.println("setStatus(" + STATUS_UPDATE_ATUALIZADOR + ")");
+			saida.flush();
+			File f1 = new File("./unicafe-update.jar");
+			out = new FileOutputStream(f1);
+			int tamanho = 4096;
+			byte[] buffer = new byte[tamanho];
+			int lidos = -1;
+			while ((lidos = in.read(buffer, 0, tamanho)) != -1) {
+				out.write(buffer, 0, lidos);
+			}
+			out.flush();
+			out.close();
+		} catch (UnknownHostException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
 
 	/**
 	 * Inicia processo de atualização do UniCaffé nesta máquina. Baixando nova
@@ -77,7 +106,6 @@ public class Update {
 
 			janela.setVisible(false);
 
-
 		} catch (UnknownHostException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {
@@ -90,7 +118,7 @@ public class Update {
 			e.printStackTrace();
 
 		}
-		
+
 	}
 
 	/**
@@ -111,4 +139,6 @@ public class Update {
 			}
 		}
 	}
+
+	public static final int STATUS_UPDATE_ATUALIZADOR = 5;
 }
