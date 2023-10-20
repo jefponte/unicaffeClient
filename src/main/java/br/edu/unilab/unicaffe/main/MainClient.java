@@ -9,7 +9,7 @@ import java.nio.channels.FileLock;
 import br.edu.unilab.unicaffe.controller.ClienteController;
 
 /**
- * 
+ *
  * @author Jefferson Uchôa Ponte Classe responsável pelo inicialização do
  *         Unicaffé Cliente
  */
@@ -20,7 +20,7 @@ public class MainClient {
 
 	/**
 	 * Método que inicia o processo.
-	 * 
+	 *
 	 * @param args
 	 */
 	public static void main(String[] args) {

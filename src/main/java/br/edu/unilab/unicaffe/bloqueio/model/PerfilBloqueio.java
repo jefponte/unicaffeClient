@@ -114,169 +114,15 @@ public class PerfilBloqueio {
 	 */
 
 	public void buscaAceitos() {
-		this.listaDeProcessosAceitos.add(new Processo("ASCService.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("BrowserCleaner.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("ctfmon.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("dasHost.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("dwm.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("fontdrvhost.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("Memory Compression", ""));
-		this.listaDeProcessosAceitos.add(new Processo("Monitor.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("mqsvc.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("Monitor.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("PubMonitor.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("Registry", ""));
-		this.listaDeProcessosAceitos.add(new Processo("scpbradserv.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("SecurityHealthService.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("sedsvc.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("SgrmBroker.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("tv_w32.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("tv_x64.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("WmiApSrv.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("RuntimeBroker.exe", ""));;
-		this.listaDeProcessosAceitos.add(new Processo("jp2launcher.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("cb_console_runner.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("SearchIndexer.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("ArcMap.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("EXCEL.EXE", ""));
-		this.listaDeProcessosAceitos.add(new Processo("wsqmcons.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("w.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("ngen.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("reg.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("netbeans.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("WINWORD.EXE", ""));
-		this.listaDeProcessosAceitos.add(new Processo("System Idle Process", ""));
-		this.listaDeProcessosAceitos.add(new Processo("cc1.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("MSOHTMED.EXE", ""));
-		this.listaDeProcessosAceitos.add(new Processo("System", ""));
-		this.listaDeProcessosAceitos.add(new Processo("smss.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("audiodg.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("explorer.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("csrss.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("wininit.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("services.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("lsass.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("armsvc.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("lsm.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("TabTip.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("WLIDSVCM.EXE", ""));
-		this.listaDeProcessosAceitos.add(new Processo("wisptis.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("Connect.Service.ContentService.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("svchost.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("taskkill.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("TrustedInstaller.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("spoolsv.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("OcsService.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("WaveAMService.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("LMS.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("gbpsv.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("jhi_service.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("WmiPrvSE.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("TdmService.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("winlogon.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("IAStorDataMgrSvc.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("taskeng.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("MsMpEng.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("eclipse.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("dllhost.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("pbadrvsvc.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("sppsvc.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("consent.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("javaw.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("igfxCUIService.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("TabTip32.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("WLIDSVC.EXE", ""));
-		this.listaDeProcessosAceitos.add(new Processo("EmbassyServer.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("HeciServer.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("IPROSetMonitor.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("oracle.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("TNSLSNR.EXE", ""));
-		this.listaDeProcessosAceitos.add(new Processo("StkCSrv.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("TeamViewer_Service.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("NisSrv.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("upeksvr.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("PresentationFontCache.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("taskhost.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("AcroRd32.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("mmc.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("conhost.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("WUDFHost.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("WeatherService.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("UpdatePlatform.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("ArcGISAdmin.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("FNPLicensingService.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("OSPPSVC.EXE", ""));
-		this.listaDeProcessosAceitos.add(new Processo("VSSVC.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("wsceaa.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("CloudOPTClient.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("SketchUp.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("WMIC.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("setup_wm.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("soffice.bin", ""));
-		this.listaDeProcessosAceitos.add(new Processo("vlc.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("wlstartup.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("firefox.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("plugin-container.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("blender.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("SketchBookDesigner.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("Dropbox.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("soffice.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("GfxUI.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("cvtres.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("GoogleUpdate.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("Updater.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("wmplayer.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("notepad.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("unregmp2.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("SearchFilterHost.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("net1.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("OCSInventory.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("mobsync.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("chrome.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("cmd", ""));
-		this.listaDeProcessosAceitos.add(new Processo("FlashPlayerUpdateService.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("igfxsrvc.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("IAStorIcon.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("OCS-NG-Windows-Agent-Setup.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("rundll32.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("wicainventory.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("core.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("wuauclt.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("jucheck.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("makecab.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("SearchProtocolHost.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("scpbradguard.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("attrib.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("CompatTelRunner.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("mscorsvw.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("LsaIso.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("Secure System", ""));
 
 
-
-		this.listaDeProcessosAceitos.add(new Processo("vds.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("SppExtComObj.Exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("MoUsoCoreWorker.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("wermgr.exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("SppExtComObj.Exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("SppExtComObj.Exe", ""));
-		this.listaDeProcessosAceitos.add(new Processo("Secure System", ""));
-		this.listaDeProcessosAceitos.add(new Processo("Secure System", ""));
-
-
-		this.listaDeProcessosAceitos.add(new Processo("WWAHost.exe", "C:\\WINDOWS\\system32\\wwahost.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("OneDriveSetup.exe", "C:\\Windows\\SysWOW64\\OneDriveSetup.exe"));
-		this.listaDeProcessosAceitos.add(new Processo("wlanext.exe", "C:\\WINDOWS\\system32\\WLANExt.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("backgroundTaskHost.exe", "C:\\WINDOWS\\system32\\backgroundTaskHost.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("RuntimeBroker.exe", "C:\\Windows\\System32\\RuntimeBroker.exe"));
-		this.listaDeProcessosAceitos.add(new Processo("sihost.exe.exe", "c:\\windows\\system32\\sihost.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("smartscreen.exe", "C:\\Windows\\System32\\smartscreen.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("taskhostw.exe", "c:\\windows\\system32\\taskhostw.exe"));
-		this.listaDeProcessosAceitos.add(new Processo("SearchUI.exe", "C:\\Windows\\SystemApps\\Microsoft.Windows.Cortana_cw5n1h2txyewy\\SearchUI.exe"));
-		this.listaDeProcessosAceitos.add(new Processo("ShellExperienceHost.exe", "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("atieclxx.exe", "C:\\Windows\\system32\\atieclxx.exe"));
-		this.listaDeProcessosAceitos.add(new Processo("sihost.exe", "C:\\Windows\\system32\\sihost.exe"));																					// iniciar
-		this.listaDeProcessosAceitos.add(new Processo("WmiApSrv.exe", "C:\\Windows\\system32\\wbem\\WmiApSrv.exe"));
+		this.listaDeProcessosAceitos.add(new Processo("sihost.exe", "C:\\Windows\\system32\\sihost.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("ApplicationFrameHost.exe", "C:\\Windows\\system32\\ApplicationFrameHost.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("atieclxx.exe", "C:\\Windows\\system32\\atieclxx.ex"));
 		this.listaDeProcessosAceitos.add(new Processo("atiesrxx.exe", "C:\\Windows\\system32\\atiesrxx.exe"));
@@ -310,7 +156,6 @@ public class PerfilBloqueio {
 		this.listaDeProcessosAceitos.add(new Processo("svchost.exe", "C:\\Windows\\system32\\svchost.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("spoolsv.exe", "C:\\Windows\\System32\\spoolsv.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("IPROSetMonitor.exe", "C:\\Windows\\system32\\IProsetMonitor.exe"));
-		this.listaDeProcessosAceitos.add(new Processo("WmiPrvSE.exe", "C:\\Windows\\system32\\wbem\\wmiprvse.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("taskhost.exe", "C:\\Windows\\system32\\taskhost.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("dwm.exe", "C:\\Windows\\system32\\Dwm.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("explorer.exe", "C:\\Windows\\Explorer.EXE"));
@@ -323,14 +168,12 @@ public class PerfilBloqueio {
 		this.listaDeProcessosAceitos.add(new Processo("mspaint.exe", "C:\\Windows\\system32\\mspaint.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("SearchProtocolHost.exe", "C:\\Windows\\system32\\SearchProtocolHost.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("SearchFilterHost.exe", "C:\\Windows\\system32\\SearchFilterHost.exe"));
-		this.listaDeProcessosAceitos.add(new Processo("WMIC.exe", "C:\\Windows\\System32\\Wbem\\wmic.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("igfxsrvc.exe", "C:\\Windows\\system32\\igfxsrvc.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("taskeng.exe", "C:\\Windows\\system32\\taskeng.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("tasklist.exe", "C:\\Windows\\system32\\tasklist.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("WUDFHost.exe", "C:\\Windows\\System32\\WUDFHost.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("dllhost.exe", "C:\\Windows\\system32\\DllHost.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("sppsvc.exe", "C:\\Windows\\system32\\sppsvc.exe"));
-		this.listaDeProcessosAceitos.add(new Processo("WMIC.exe", "C:\\Windows\\SysWOW64\\Wbem\\wmic.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("rundll32.exe", "C:\\Windows\\System32\\rundll32.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("explorer.exe", "C:\\Windows\\SysWOW64\\explorer.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("taskkill.exe", "C:\\Windows\\SysWOW64\\taskkill.exe"));
@@ -357,7 +200,6 @@ public class PerfilBloqueio {
 		this.listaDeProcessosAceitos.add(new Processo("Defrag.exe", "C:\\Windows\\system32\\defrag.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("aitagent.exe", "C:\\Windows\\system32\\aitagent.EXE"));
 		this.listaDeProcessosAceitos.add(new Processo("unregmp2.exe", "C:\\Windows\\SysWOW64\\unregmp2.exe"));
-		this.listaDeProcessosAceitos.add(new Processo("WMIADAP.exe", "C:\\Windows\\system32\\wbem\\WMIADAP.EXE"));
 		this.listaDeProcessosAceitos.add(new Processo("taskkill.exe", "C:\\Windows\\system32\\taskkill.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("WerFault.exe", "C:\\Windows\\SysWOW64\\WerFault.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("Dxpserver.exe", "C:\\Windows\\system32\\DXPServer.exe"));
@@ -370,13 +212,11 @@ public class PerfilBloqueio {
 		this.listaDeProcessosAceitos.add(new Processo("MpSigStub.exe", "C:\\Windows\\system32\\MpSigStub.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("sdclt.exe", "C:\\Windows\\System32\\sdclt.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("net.exe", "C:\\Windows\\SysWOW64\\net.exe"));
-		this.listaDeProcessosAceitos.add(new Processo("WmiPrvSE.exe", "C:\\Windows\\sysWOW64\\wbem\\wmiprvse.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("cacls.exe", "C:\\Windows\\system32\\cacls.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("drvinst.exe", "C:\\Windows\\system32\\DrvInst.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("makecab.exe", "C:\\Windows\\system32\\makecab.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("attrib.exe", "C:\\Windows\\system32\\attrib.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("notepad.exe", "C:\\Windows\\SysWOW64\\notepad.exe"));
-		this.listaDeProcessosAceitos.add(new Processo("unsecapp.exe", "C:\\Windows\\system32\\wbem\\unsecapp.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("wmdc.exe", "C:\\Windows\\WindowsMobile\\wmdc.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("cmd.exe", "C:\\Windows\\system32\\cmd.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("java.exe", "C:\\Windows\\system32\\java.exe"));
@@ -518,6 +358,11 @@ public class PerfilBloqueio {
 				}
 
 				String[] vDados = linha.split("[,]");
+
+				if(vDados[1].isEmpty()) {
+					continue;
+				}
+
 				this.processosAtivos.add(new Processo(vDados[2], vDados[1], vDados[3]));
 
 			}
@@ -529,13 +374,20 @@ public class PerfilBloqueio {
 	}
 	public boolean isAllowedPath(String path) {
 	    String[] allowedPaths = {
-	        "c:\\windows\\system32\\driverstore\\filerepository",
-	        "C:\\Windows\\SERVIC",
+	        "C:\\windows\\servic",
 	        "c:\\progra",
 	        "c:\\positivo",
 	        "c:\\windows\\winsxs\\",
-	        "c:\\windows\\microsoft.net",
-	        "c:\\users"
+	        "c:\\windows\\microsoft",
+	        "c:\\users",
+	        "c:\\windows\\system32\\drivers",
+	        "c:\\windows\\systemapps",
+	        "c:\\windows\\servicing",
+	        "c:\\windows\\system32\\lsaiso",
+	        "c:\\windows\\system32\\oobe",
+	        "c:\\windows\\immersivecontrolpanel",
+	        "c:\\windows\\system32\\wbem",
+        	"c:\\windows\\system32\\mousocoreworker.exe"
 	    };
 
 	    String lowerPath = path.toLowerCase();
@@ -559,7 +411,7 @@ public class PerfilBloqueio {
 			Processo processoAtivo = it.next();
 			existeNaLista = false;
 
-			this.isAllowedPath(processoAtivo.getExecutablePath()) {
+			if(this.isAllowedPath(processoAtivo.getExecutablePath())) {
 				continue;
 			}
 
