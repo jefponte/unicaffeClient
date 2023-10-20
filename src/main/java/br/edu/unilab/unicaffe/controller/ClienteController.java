@@ -1146,5 +1146,5 @@ public class ClienteController {
 	/**
 	 * Indica a versão do UniCaffé Cliente.
 	 */
-	public static final String VERSAO = "45";
+	public static final String VERSAO = "Programador 1";
 }
