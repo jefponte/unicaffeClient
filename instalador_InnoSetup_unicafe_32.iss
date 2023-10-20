@@ -3,7 +3,7 @@
 
 #define MyAppName "UniCafe"
 #define MyAppVersion "Beta"
-#define MyAppPublisher "UNILAB - Universidade da Integração Internacional da Lusofonia Afro-Brasileira"
+#define MyAppPublisher "UNILAB - Universidade da Integraï¿½ï¿½o Internacional da Lusofonia Afro-Brasileira"
 #define MyAppURL "http://www.unilab.edu.br/"
 #define MyAppExeName "UniCafeClient.exe"
 
@@ -57,20 +57,30 @@ Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"; Val
 ;Loga automatico
 Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"; ValueType: string; ValueName: "AutoAdminLogon"; ValueData: "1"; Flags: uninsdeletekey
 ;Inicia automaticamente
-Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "unicafe"; ValueData: "{app}\UniCafeClient.exe"; Flags: uninsdeletekey 
-;Não pergunte se pode me abrir.
-Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce"; ValueType: string; ValueName: "unicafe"; ValueData: "{app}\UniCafeClient.exe"; Flags: uninsdeletekey 
-;Não pergunte se pode me abrir.
-Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"; ValueType: dword; ValueName: "ConsentPromptBehaviorAdmin"; ValueData: "00"; Flags: uninsdeletekey 
+Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "unicafe"; ValueData: "{app}\UniCafeClient.exe"; Flags: uninsdeletekey
+;Nï¿½o pergunte se pode me abrir.
+Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce"; ValueType: string; ValueName: "unicafe"; ValueData: "{app}\UniCafeClient.exe"; Flags: uninsdeletekey
+;Nï¿½o pergunte se pode me abrir.
+Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"; ValueType: dword; ValueName: "ConsentPromptBehaviorAdmin"; ValueData: "00"; Flags: uninsdeletekey
 ;Roda como administrador
-Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\UniCafeClient.exe"; ValueData: "RUNASADMIN"; Flags: uninsdeletekey 
+Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\UniCafeClient.exe"; ValueData: "RUNASADMIN"; Flags: uninsdeletekey
 
 
-[Run]
-Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
-;cria um usuario
-;Filename: {sys}\cmd.exe; Parameters: "/C net user unicafe unicafe@unilab /add /expires:never /passwordchg:no"; Flags: nowait
-;poe como administrador. 
-;Filename: {sys}\cmd.exe; Parameters: "/C net localgroup administradores unicafe  /add"; Flags: nowait; 
-;Instalar servico
-Filename: "{app}\install.bat"; Parameters: "{app}"
+[Code]
+function NextButtonClick(CurPageID: Integer): Boolean;
+var
+  ResultCode: Integer;
+begin
+  if CurPageID = wpReady then
+  begin
+    Exec('cmd.exe', '/c net user unicafe /delete', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec('cmd.exe', '/c net user unicafe unicafe@unilab /add', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec('cmd.exe', '/c net user unicafe /expires:never', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec('cmd.exe', '/c net accounts /maxpwage:unlimited', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec('cmd.exe', '/c net localgroup administradores unicafe /add', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec('cmd.exe', '/c wmic useraccount where "Name=''unicafe''" set PasswordExpires=false', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec('cmd.exe', '/c jabswitch /enable', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  end;
+
+  Result := True;
+end;

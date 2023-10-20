@@ -35,7 +35,6 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: ".\UniCafeClient.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "papel-de-parede.jpg"; DestDir:"C:\Windows\Web\Wallpaper\Windows"; Flags: ignoreversion;
-Source: "install.bat"; DestDir: "{app}"; Flags: ignoreversion;
 Source: ".\target\unicafe-update.jar"; DestDir: "{app}"; Flags: ignoreversion;
 Source: ".\config.ini"; DestDir: "{app}"; Flags: ignoreversion;
 Source: ".\permitidos.txt"; DestDir: "{app}"; Flags: ignoreversion;
@@ -61,5 +60,21 @@ Root: HKLM64; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
 Root: HKLM64; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\UniCafeClient.exe"; ValueData: "RUNASADMIN"; Flags: uninsdeletekey 
 
 
-[Run]
-Filename: "{app}\install.bat"; Parameters: "{app}"
+[Code]
+function NextButtonClick(CurPageID: Integer): Boolean;
+var
+  ResultCode: Integer;
+begin
+  if CurPageID = wpReady then
+  begin
+    Exec('cmd.exe', '/c net user unicafe /delete', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec('cmd.exe', '/c net user unicafe unicafe@unilab /add', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec('cmd.exe', '/c net user unicafe /expires:never', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec('cmd.exe', '/c net accounts /maxpwage:unlimited', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec('cmd.exe', '/c net localgroup administradores unicafe /add', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec('cmd.exe', '/c wmic useraccount where "Name=''unicafe''" set PasswordExpires=false', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+    Exec('cmd.exe', '/c jabswitch /enable', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  end;
+
+  Result := True; 
+end;
