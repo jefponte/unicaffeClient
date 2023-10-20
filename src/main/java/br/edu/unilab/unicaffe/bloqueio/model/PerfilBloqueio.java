@@ -15,11 +15,11 @@ import java.util.Scanner;
 import br.edu.unilab.unicaffe.util.Log;
 
 /**
- * 
+ *
  * Classe gerencia listas de bloqueios de processos.
- * 
+ *
  * @author Jefferson Uchôa Ponte
- * 
+ *
  *
  */
 public class PerfilBloqueio {
@@ -38,7 +38,7 @@ public class PerfilBloqueio {
 	private Collection<Processo> listaDeBloqueados;
 
 	/**
-	 * 
+	 *
 	 * @return Collection listaDeBloqueados
 	 */
 	public Collection<Processo> getListaDeBloqueados() {
@@ -46,7 +46,7 @@ public class PerfilBloqueio {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param listaDeBloqueados
 	 */
 	public void setListaDeBloqueados(Collection<Processo> listaDeBloqueados) {
@@ -54,7 +54,7 @@ public class PerfilBloqueio {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return a lista de processos que não serão bloqueados.
 	 */
 	public Collection<Processo> getListaDeAceitos() {
@@ -62,7 +62,7 @@ public class PerfilBloqueio {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return a lista de processos em execução pelo sistema operacional.
 	 */
 	public Collection<Processo> getProcessosAtivos() {
@@ -80,7 +80,7 @@ public class PerfilBloqueio {
 
 	/**
 	 * Adiciona processo na lista de processos aceitos.
-	 * 
+	 *
 	 * @param processo
 	 */
 	public void addProcesso(Processo processo) {
@@ -90,7 +90,7 @@ public class PerfilBloqueio {
 
 	/**
 	 * Define uma lista de processos aceitos.
-	 * 
+	 *
 	 * @param processos
 	 */
 	public void setListaDeProcessosAceitos(Collection<Processo> processos) {
@@ -98,13 +98,13 @@ public class PerfilBloqueio {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return processos aceitos do windows 10
-	 * 
+	 *
 	 */
 	public Collection<Processo> buscaAceitosWindows10() {
 		Collection<Processo> lista = new Vector<Processo>();
-		
+
 
 		return lista;
 	}
@@ -252,7 +252,7 @@ public class PerfilBloqueio {
 		this.listaDeProcessosAceitos.add(new Processo("LsaIso.exe", ""));
 		this.listaDeProcessosAceitos.add(new Processo("Secure System", ""));
 
-		
+
 
 		this.listaDeProcessosAceitos.add(new Processo("vds.exe", ""));
 		this.listaDeProcessosAceitos.add(new Processo("SppExtComObj.Exe", ""));
@@ -262,8 +262,8 @@ public class PerfilBloqueio {
 		this.listaDeProcessosAceitos.add(new Processo("SppExtComObj.Exe", ""));
 		this.listaDeProcessosAceitos.add(new Processo("Secure System", ""));
 		this.listaDeProcessosAceitos.add(new Processo("Secure System", ""));
-		
-		
+
+
 		this.listaDeProcessosAceitos.add(new Processo("WWAHost.exe", "C:\\WINDOWS\\system32\\wwahost.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("OneDriveSetup.exe", "C:\\Windows\\SysWOW64\\OneDriveSetup.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("wlanext.exe", "C:\\WINDOWS\\system32\\WLANExt.exe"));
@@ -416,7 +416,7 @@ public class PerfilBloqueio {
 		this.listaDeProcessosAceitos.add(new Processo("WatAdminSvc.exe", "C:\\Windows\\system32\\Wat\\WatAdminSvc.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("WerFault.exe", "C:\\Windows\\system32\\WerFault.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("UI0Detect.exe", "C:\\Windows\\system32\\UI0Detect.exe"));
-		this.listaDeProcessosAceitos.add(new Processo("FlashPlayerPlugin_18_0_0_209.exe","C:\\Windows\\system32\\Macromed\\Flash\\FlashPlayerPlugin_18_0_0_209.exe"));		
+		this.listaDeProcessosAceitos.add(new Processo("FlashPlayerPlugin_18_0_0_209.exe","C:\\Windows\\system32\\Macromed\\Flash\\FlashPlayerPlugin_18_0_0_209.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("FlashPlayerUpdateService.exe","C:\\Windows\\system32\\Macromed\\Flash\\FlashPlayerUpdateService.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("FlashPlayerPlugin_13_0_0_214.exe","C:\\Windows\\SysWOW64\\Macromed\\Flash\\FlashPlayerPlugin_13_0_0_214.exe"));
 		this.listaDeProcessosAceitos.add(new Processo("AM_Delta_Patch_1.203.1791.0.exe","C:\\Windows\\SoftwareDistribution\\Download\\Install\\AM_Delta_Patch_1.203.1791.0.exe"));
@@ -527,7 +527,27 @@ public class PerfilBloqueio {
 		}
 
 	}
+	public boolean isAllowedPath(String path) {
+	    String[] allowedPaths = {
+	        "c:\\windows\\system32\\driverstore\\filerepository",
+	        "C:\\Windows\\SERVIC",
+	        "c:\\progra",
+	        "c:\\positivo",
+	        "c:\\windows\\winsxs\\",
+	        "c:\\windows\\microsoft.net",
+	        "c:\\users"
+	    };
 
+	    String lowerPath = path.toLowerCase();
+
+	    for (String allowed : allowedPaths) {
+	        if (lowerPath.startsWith(allowed)) {
+	            return true;
+	        }
+	    }
+
+	    return false;
+	}
 	/**
 	 * Mata os processos ativos que não estiverem na lista dos permitidos. .
 	 */
@@ -537,41 +557,12 @@ public class PerfilBloqueio {
 		Iterator<Processo> it = processosAtivos.iterator();// usando iterator para evitar erros de acessos simultâneos
 		while (it.hasNext()) {
 			Processo processoAtivo = it.next();
-			existeNaLista = false;			
-			
-			if (processoAtivo.getExecutablePath().length() >= 46) {
-				if (processoAtivo.getExecutablePath().substring(0, 46).toLowerCase().substring(0, 46).equals("c:\\windows\\system32\\driverstore\\filerepository")) {
-					continue;
-				}
-			}
-			
-			if (processoAtivo.getExecutablePath().length() >= 17) {
-				if (processoAtivo.getExecutablePath().substring(0, 17).toLowerCase().equals("C:\\Windows\\SERVIC")) {
-					continue;
-				}
-			}			
+			existeNaLista = false;
 
-			if (processoAtivo.getExecutablePath().length() >= 9) {
-				if (processoAtivo.getExecutablePath().substring(0, 9).toLowerCase().equals("c:\\progra")) {
-					continue;
-				}
+			this.isAllowedPath(processoAtivo.getExecutablePath()) {
+				continue;
 			}
-			if (processoAtivo.getExecutablePath().length() >= 11) {
-				if (processoAtivo.getExecutablePath().substring(0, 11).toLowerCase().equals("c:\\positivo")) {
-					continue;
-				}
-			}
-			if (processoAtivo.getExecutablePath().length() >= 18) {
-				if (processoAtivo.getExecutablePath().substring(0, 18).toLowerCase().equals("c:\\windows\\winsxs\\")) {
-					continue;
-				}
-			}
-			
-			if (processoAtivo.getExecutablePath().length() >= 24) {
-				if (processoAtivo.getExecutablePath().substring(0, 24).toLowerCase().equals("c:\\windows\\microsoft.net")) {
-					continue;
-				}
-			}
+
 			for (Processo processoAceito : this.listaDeProcessosAceitos) {
 				if (processoAtivo.equals(processoAceito)) {
 					existeNaLista = true;
@@ -580,7 +571,7 @@ public class PerfilBloqueio {
 				}
 			}
 			if(existeNaLista) {
-				
+
 				continue;
 			}
 
@@ -596,7 +587,7 @@ public class PerfilBloqueio {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		
+
 
 		}
 	}
