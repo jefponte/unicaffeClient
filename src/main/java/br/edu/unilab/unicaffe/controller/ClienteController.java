@@ -294,19 +294,9 @@ public class ClienteController {
 	 * Registros.
 	 */
 	public void bloqueiaServicos() {
-
 		Perfil perfilBloqueio = new Perfil();
 		perfilBloqueio.setListaDeRegistros(Perfil.listaParaBloqueio());
 		perfilBloqueio.executar();
-
-		Perfil perfilTemporarioExecucao = new Perfil();
-		perfilTemporarioExecucao.setListaDeRegistros(Perfil.perfilTemporarioExecucao());
-		perfilTemporarioExecucao.executar();
-
-		Perfil perfilTemporarioDesativado = new Perfil();
-		perfilTemporarioDesativado.setListaDeRegistros(Perfil.perfilTemporarioDesativado());
-		perfilTemporarioDesativado.deletar();
-
 	}
 
 	/**
@@ -375,13 +365,6 @@ public class ClienteController {
 		perfilBloqueio.setListaDeRegistros(Perfil.listaParaBloqueio());
 		perfilBloqueio.desfazer();
 
-		Perfil perfilTemporario = new Perfil();
-		perfilTemporario.setListaDeRegistros(Perfil.perfilTemporarioExecucao());
-		perfilTemporario.deletar();
-
-		Perfil perfilTemporarioDesativado = new Perfil();
-		perfilTemporarioDesativado.setListaDeRegistros(Perfil.perfilTemporarioDesativado());
-		perfilTemporarioDesativado.executar();
 	}
 
 	/**

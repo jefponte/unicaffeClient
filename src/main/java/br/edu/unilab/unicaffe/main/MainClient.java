@@ -7,6 +7,7 @@ import java.io.RandomAccessFile;
 import java.nio.channels.FileLock;
 
 import br.edu.unilab.unicaffe.controller.ClienteController;
+import br.edu.unilab.unicaffe.registro.model.Perfil;
 
 /**
  *
@@ -25,21 +26,22 @@ public class MainClient {
 	 */
 	public static void main(String[] args) {
 
-		File f = new File(".lock");
-		FileLock lock = null;
-		try {
-			f.createNewFile();
-			randomAccessFile = new RandomAccessFile(f, "rw");
-			lock = randomAccessFile.getChannel().tryLock();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		if (lock != null) {
-			ClienteController controle = new ClienteController();
-			controle.iniciaCliente();
-		}
+
+		// File f = new File(".lock");
+		// FileLock lock = null;
+		// try {
+		// 	f.createNewFile();
+		// 	randomAccessFile = new RandomAccessFile(f, "rw");
+		// 	lock = randomAccessFile.getChannel().tryLock();
+		// } catch (FileNotFoundException e) {
+		// 	e.printStackTrace();
+		// } catch (IOException e) {
+		// 	e.printStackTrace();
+		// }
+		// if (lock != null) {
+		// 	ClienteController controle = new ClienteController();
+		// 	controle.iniciaCliente();
+		// }
 	}
 
 }

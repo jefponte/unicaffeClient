@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 /**
- * 
+ *
  * @author Jefferson Uchôa Ponte Classe responsável pelos perfis de
  *         restrições/permissões aos registros
  *
@@ -25,7 +25,7 @@ public class Perfil {
 	private String descricao;
 
 	/**
-	 * 
+	 *
 	 * @return lista de registros
 	 */
 	public Collection<Registro> getListaDeRegistros() {
@@ -33,7 +33,7 @@ public class Perfil {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param listaDeRegistros
 	 *            atribui um array a lista de registros
 	 */
@@ -42,7 +42,7 @@ public class Perfil {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return nome do registro
 	 */
 	public String getNome() {
@@ -50,7 +50,7 @@ public class Perfil {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param nome
 	 *            nome do registro
 	 */
@@ -60,7 +60,7 @@ public class Perfil {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return descrição
 	 */
 	public String getDescricao() {
@@ -68,7 +68,7 @@ public class Perfil {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param descricao
 	 *            descrição do registro
 	 */
@@ -120,7 +120,7 @@ public class Perfil {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return preenche a lista de registros que serão bloqueados
 	 */
 	public static Collection<Registro> listaParaBloqueio() {
@@ -219,57 +219,5 @@ public class Perfil {
 				Registro.REG_SZ, "C:\\Program Files\\UniCafe\\UniCafeClient.exe",
 				"C:\\Program Files\\UniCafe\\UniCafeClient.exe", "inicia Unicaffe"));
 		return lista;
-	}
-
-	/**
-	 * São registros que são adicionados no sistema quando o UniCaffe está em
-	 * execução, mas que são deletados na desativação do UNICAFFE São deletados
-	 * quando o UniCafe Desativa.
-	 * 
-	 * @return
-	 */
-	public static Collection<Registro> perfilTemporarioExecucao() {
-		Collection<Registro> temporario = new HashSet<Registro>();
-		temporario.add(new Registro(
-				"HKU\\S-1-5-21-450030969-3659189506-2535807683-1000\\Software\\Microsoft\\Windows\\CurrentVersion\\Group Policy Objects\\{716A25C0-6B71-4F49-9187-11CA3F39AF5C}User\\Software\\Policies\\Microsoft\\Windows\\Explorer",
-				"PowerButtonAction", Registro.REG_DWORD, "512", "",
-				"muda opcao de logof do menu iniciar pra bloquear"));
-		temporario.add(new Registro(
-				"HKU\\S-1-5-21-450030969-3659189506-2535807683-1000\\Software\\Policies\\Microsoft\\Windows\\Explorer",
-				"PowerButtonAction", Registro.REG_DWORD, "512", "",
-				"muda opcao de logof do menu iniciar pra bloquear"));
-		return temporario;
-	}
-
-	/**
-	 * São registros que são adicionados no sistema quando o UniCaffe está em sendo
-	 * desativado. Faz com que a máquina volte às configurações padrão. Esses
-	 * registros são deletados quando o UniCaffe liga.
-	 * 
-	 * @return
-	 */
-	public static Collection<Registro> perfilTemporarioDesativado() {
-		Collection<Registro> temporario = new HashSet<Registro>();
-		temporario
-				.add(new Registro("HKEY_CLASSES_ROOT\\lnkfile\\shellex\\ContextMenuHandlers\\OpenContainingFolderMenu",
-						"", Registro.REG_SZ, "{37ea3a21-7493-4208-a011-7f9ea79ce9f5}",
-						"{37ea3a21-7493-4208-a011-7f9ea79ce9f5}", ""));
-		temporario.add(new Registro(
-				"HKEY_CLASSES_ROOT\\LibraryLocation\\ShellEx\\ContextMenuHandlers\\OpenContainingFolderMenu", "",
-				Registro.REG_SZ, "{37ea3a21-7493-4208-a011-7f9ea79ce9f5}", "{37ea3a21-7493-4208-a011-7f9ea79ce9f5}",
-				""));
-		temporario
-				.add(new Registro("HKEY_CLASSES_ROOT\\Results\\ShellEx\\ContextMenuHandlers\\OpenContainingFolderMenu",
-						"", Registro.REG_SZ, "{37ea3a21-7493-4208-a011-7f9ea79ce9f5}",
-						"{37ea3a21-7493-4208-a011-7f9ea79ce9f5}", ""));
-		temporario
-				.add(new Registro("HKEY_CLASSES_ROOT\\.symlink\\shellex\\ContextMenuHandlers\\OpenContainingFolderMenu",
-						"", Registro.REG_SZ, "{37ea3a21-7493-4208-a011-7f9ea79ce9f5}",
-						"{37ea3a21-7493-4208-a011-7f9ea79ce9f5}", ""));
-		temporario.add(new Registro(
-				"HKU\\S-1-5-21-450030969-3659189506-2535807683-1000\\Software\\Microsoft\\Windows\\CurrentVersion\\Group Policy Objects\\{716A25C0-6B71-4F49-9187-11CA3F39AF5C}User\\Software\\Policies\\Microsoft\\Windows\\Explorer",
-				"**del.PowerButtonAction", Registro.REG_EXPAND_SZ, " ", "",
-				"Deixar botão de logof no menu iniciar do jeito padrão"));
-		return temporario;
 	}
 }
