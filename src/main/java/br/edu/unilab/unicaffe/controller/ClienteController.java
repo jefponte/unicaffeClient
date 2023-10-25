@@ -40,12 +40,12 @@ import br.edu.unilab.unicaffe.view.FrameTelaBloqueio;
 
 /**
  * Classe que se ocupa com o núcleo do sistema do lado do cliente.
- * 
+ *
  * @author Jefferson Uchôa Ponte
  *
  */
 public class ClienteController {
-		
+
 	/**
 	 * Barra visualizada durante o acesso.
 	 */
@@ -81,13 +81,13 @@ public class ClienteController {
 	 * Atributo que possui conexões com o servidor.
 	 */
 	private Cliente cliente;
-	
+
 	/**
 	 * Retorna o semáforo.
-	 * 
+	 *
 	 * @return
 	 */
-	
+
 	public Semaphore getSemaforo() {
 		return this.semaforo;
 	}
@@ -98,7 +98,7 @@ public class ClienteController {
 
 	/**
 	 * Constroi objeto ClienteController.
-	 * 
+	 *
 	 */
 
 	public ClienteController() {
@@ -115,7 +115,7 @@ public class ClienteController {
 
 	/**
 	 * Faz com que a aplicação do UniCaffé Cliente tenha início de execução.
-	 * 
+	 *
 	 */
 	public void iniciaCliente() {
 		verificaConexao(10);
@@ -210,8 +210,8 @@ public class ClienteController {
 
 			getFrameTelaBloqueio().setVisible(false);
 			desBloqueandoServicos();
-			
-			
+
+
 			try {
 				Runtime.getRuntime()
 						.exec(" attrib " + System.getProperty("user.home") + "\\Links\\RecentPlaces.lnk -h");
@@ -221,7 +221,7 @@ public class ClienteController {
 			} catch (IOException | InterruptedException e) {
 				e.printStackTrace();
 			}
-			
+
 			System.exit(0);
 		}
 
@@ -419,7 +419,7 @@ public class ClienteController {
 						} catch (NullPointerException e) {
 							new Log(e.getMessage(), "log.log");
 						} finally {
-							
+
 						}
 
 						Thread.sleep(100);
@@ -466,14 +466,14 @@ public class ClienteController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param bloqueia
 	 *            ou libera internet
 	 */
 
 	public void bloqueiaInternet(boolean bloqueia) {
 		Collection<String> processos = new ArrayList<>();
-		
+
 		if (bloqueia) {
 			processos.add("netsh advfirewall set  allprofiles state on");
 			processos.add(
@@ -486,14 +486,14 @@ public class ClienteController {
 			processaProcessos(processos);
 		} else {
 			try {
-				Runtime.getRuntime().exec("netsh advfirewall reset").waitFor();				
+				Runtime.getRuntime().exec("netsh advfirewall reset").waitFor();
 				Runtime.getRuntime().exec("netsh firewall reset").waitFor();
 			} catch (InterruptedException | IOException e) {
 				e.printStackTrace();
 			}
-			
+
 		}
-		
+
 	}
 
 	/**
@@ -518,7 +518,7 @@ public class ClienteController {
 				printStream.println("setNome(" + getCliente().getMaquina().getNome() + ")");
 				printStream.println("setVersao(" + getCliente().getMaquina().getVersao() + ")");
 				printStream.println("setMac(" + getCliente().getMaquina().getEnderecoMac() + ")");
-				
+
 				while (getCliente().getConexao().isConnected()) {
 					String mensagem;
 					try {
@@ -549,11 +549,11 @@ public class ClienteController {
 		});
 		processando.start();
 	}
-	
+
 	/**
 	 * verifica se o servidor está respondendo caso não encerra a conexão
 	 * @param tempoEsperaMinutos
-	 * 
+	 *
 	 */
 	private void verificaConexao(final long tempoEsperaMinutos) {
 
@@ -563,7 +563,7 @@ public class ClienteController {
 				System.out.println("entrando na tread do limpar Inativos");
 				while (true) {
 					System.out.println("dentro do limparInativos");
-					
+
 					long umMinuto = 60000;
 					long tempoEspera = umMinuto * tempoEsperaMinutos;
 
@@ -572,7 +572,7 @@ public class ClienteController {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					
+
 					long dataAtual = new Date().getTime();
 					long tempoOcio = dataAtual - cliente.getUltimaInteracao();
 
@@ -585,12 +585,12 @@ public class ClienteController {
 		}).start();
 	}
 
-		
+
 	/**
-	 * 
+	 *
 	 * Verifica uma mensagem enviada pelo servidor e executa uma operação como
 	 * resposta.
-	 * 
+	 *
 	 * @param mensagem
 	 */
 	public synchronized void processaMensagem(String mensagem) {
@@ -598,16 +598,16 @@ public class ClienteController {
 		System.out.println(mensagem);
 		cliente.setUltimaInteracao(new Date().getTime());
 
-		
+
 		if (mensagem == null) {
 			System.out.println("mensagem nula");
 			return;
 		}
-		
+
 		if (mensagem.indexOf('(') == -1 || mensagem.indexOf(')') == -1) {
 			return;
 		}
-		
+
 		String comando = mensagem.substring(0, mensagem.indexOf('('));
 		final String parametros = mensagem.substring(mensagem.indexOf('(') + 1, mensagem.lastIndexOf(')'));
 		if (comando.equals("bloqueia")) {
@@ -718,8 +718,8 @@ public class ClienteController {
 		else if (comando.equals("desligar")) {
 
 			bloqueia();
-			
-			
+
+
 			try {
 				Runtime.getRuntime().exec(" shutdown /s -t 00");
 				getFrameTelaBloqueio().setVisible(true);
@@ -812,8 +812,8 @@ public class ClienteController {
 			Process processo = Runtime.getRuntime().exec(" taskkill /f /im explorer.exe");
 			processo.waitFor();
 			Runtime.getRuntime().exec(" java -jar \".\\unicafe-update.jar\"");
-			System.exit(0);	
-			
+			System.exit(0);
+
 		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -826,7 +826,7 @@ public class ClienteController {
 	private void logoff() {
 		bloqueia();
 		try {
-			Runtime.getRuntime().exec("logoff");			
+			Runtime.getRuntime().exec("logoff");
 			getFrameTelaBloqueio().setVisible(true);
 			return;
 		} catch (IOException e) {
@@ -836,7 +836,7 @@ public class ClienteController {
 
 	/**
 	 * usado pra mudar o cliente de um servidor pro outro
-	 * 
+	 *
 	 * @param servidor
 	 * @param servidor2
 	 */
@@ -880,7 +880,7 @@ public class ClienteController {
 
 	/**
 	 * Faz o desbloqueio do UniCaffé por tempo determinado para um login de usuário.
-	 * 
+	 *
 	 * @param segundos
 	 * @param login
 	 */
@@ -888,7 +888,7 @@ public class ClienteController {
 		setBloqueado(true);
 		EventQueue.invokeLater(new Runnable() {
 			@Override
-			public void run() {				
+			public void run() {
 				getFrameTelaAcesso().getLabelLogin().setText(login);
 				getFrameTelaAcesso().getLabelTempo().setText("calculando");
 				getFrameAviso().setVisible(false);
@@ -897,6 +897,11 @@ public class ClienteController {
 				getFrameTelaAcesso().setVisible(true);
 			}
 		});
+
+		Perfil inUseProfile = new Perfil();
+		inUseProfile.setListaDeRegistros(Perfil.inUseList());
+		inUseProfile.executar();
+
 		restartNoExplorer();
 		if (getCliente().getSaida() != null) {
 			new PrintStream(getCliente().getSaida()).println("setStatus(" + Maquina.STATUS_OCUPADA + ")");
@@ -935,7 +940,7 @@ public class ClienteController {
 						Thread.sleep(1000);
 						int tempo = 600;
 						try {
-							
+
 							// Região crítica.
 							getSemaforo().acquire();
 							tempo = (getCliente().getMaquina().getAcesso().getTempoDisponibilizado()
@@ -999,7 +1004,7 @@ public class ClienteController {
 
 	/**
 	 * Apaga dados de usuário da máquina.
-	 * 
+	 *
 	 * @param arquivo
 	 */
 	public void apagarDados(File arquivo) {
@@ -1022,7 +1027,7 @@ public class ClienteController {
 
 	/**
 	 * Verifica se apagou.
-	 * 
+	 *
 	 * @param arquivo
 	 */
 	public boolean verificaSeApagou(File arquivo) {
@@ -1031,7 +1036,7 @@ public class ClienteController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Tela de acesso
 	 */
 	public FrameTelaAcesso getFrameTelaAcesso() {
@@ -1039,7 +1044,7 @@ public class ClienteController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return tela de aviso do administrador.
 	 */
 	public FrameAviso getFrameAviso() {
@@ -1047,7 +1052,7 @@ public class ClienteController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return conexões do cliente com o servidor.
 	 */
 	public Cliente getCliente() {
@@ -1055,7 +1060,7 @@ public class ClienteController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return tela de bloqueio.
 	 */
 	public FrameTelaBloqueio getFrameTelaBloqueio() {
@@ -1063,7 +1068,7 @@ public class ClienteController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return estado do UniCaffé, bloqueado ou não.
 	 */
 	public boolean isBloqueado() {
@@ -1071,7 +1076,7 @@ public class ClienteController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param bloqueado
 	 */
 	public void setBloqueado(boolean bloqueado) {
@@ -1079,7 +1084,7 @@ public class ClienteController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public boolean isBloqueandoAplicacoes() {
@@ -1087,7 +1092,7 @@ public class ClienteController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param bloqueandoAplicacoes
 	 */
 	public void setBloqueandoAplicacoes(boolean bloqueandoAplicacoes) {
@@ -1144,9 +1149,9 @@ public class ClienteController {
 	 * Porta do servidor secundário.
 	 */
 	public static int portaServidorSecundario = 27289;
-	
+
 	/**
 	 * Indica a versão do UniCaffé Cliente.
 	 */
-	public static final String VERSAO = "Pro-2.1";
+	public static final String VERSAO = "Pro-2.2";
 }

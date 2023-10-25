@@ -7,6 +7,7 @@ import java.io.RandomAccessFile;
 import java.nio.channels.FileLock;
 
 import br.edu.unilab.unicaffe.controller.ClienteController;
+import br.edu.unilab.unicaffe.registro.model.Perfil;
 
 /**
  *
@@ -25,6 +26,19 @@ public class MainClient {
 	 */
 	public static void main(String[] args) {
 
+		
+//		Perfil perfilBloqueio = new Perfil();
+//		perfilBloqueio.setListaDeRegistros(Perfil.listaParaBloqueio());
+//		perfilBloqueio.desfazer();
+//		
+//		try {
+//			Process processo = Runtime.getRuntime().exec(" taskkill /f /im explorer.exe");
+//			processo.waitFor();
+//			Runtime.getRuntime().exec("explorer.exe");
+//			System.out.println("Ressucitou explorer");
+//		} catch (IOException | InterruptedException e) {
+//			e.printStackTrace();
+//		}
 		File f = new File(".lock");
 		FileLock lock = null;
 		try {
