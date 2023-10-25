@@ -35,7 +35,7 @@ public class Perfil {
 	/**
 	 *
 	 * @param listaDeRegistros
-	 *            atribui um array a lista de registros
+	 *                         atribui um array a lista de registros
 	 */
 	public void setListaDeRegistros(Collection<Registro> listaDeRegistros) {
 		this.listaDeRegistros = listaDeRegistros;
@@ -52,7 +52,7 @@ public class Perfil {
 	/**
 	 *
 	 * @param nome
-	 *            nome do registro
+	 *             nome do registro
 	 */
 
 	public void setNome(String nome) {
@@ -70,7 +70,7 @@ public class Perfil {
 	/**
 	 *
 	 * @param descricao
-	 *            descrição do registro
+	 *                  descrição do registro
 	 */
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
@@ -125,39 +125,33 @@ public class Perfil {
 	 */
 	public static Collection<Registro> listaParaBloqueio() {
 		Collection<Registro> lista = new HashSet<Registro>();
-		
-		//Coisas que vou setar como default, pensanbdo que deveria ter sido assim sempre
-		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoClose",
-				Registro.REG_DWORD, "0", "0", "Sem o Botão de Desligar no Menu Iniciar"));
-		lista.add(new Registro("HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoClose",
-				Registro.REG_DWORD, "0", "0", "Remove Opção de Desligar no Ctrl+Alt+del"));
-		lista.add(new Registro("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoLogOff",
-				Registro.REG_DWORD, "0", "0", "Remove Opção para Logoff no Ctrl+ALT+DEL"));
-		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
-				"HideFastUserSwitching", Registro.REG_DWORD, "0", "0",
-				"Remove Opção para Trocar de Usuário no Ctrl+ALT+DEL"));
-		lista.add(new Registro("HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
-				"DisableChangePassword", Registro.REG_DWORD, "0", "0", "Remove Opção Trocar Senha no Ctrl+ALt+DEl"));
-		lista.add(new Registro("HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
-				"DisableLockWorkstation", Registro.REG_DWORD, "0", "0",
-				"Remove Opção para Bloquear este Computador no Ctrl+ALT+DEL"));
-		lista.add(new Registro("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
-				"NoStartMenuMFUprogramsList", Registro.REG_DWORD, "0", "0", "Sem lista de programas no Menu Iniciar"));
 
-		//Coisas que vou setar como default
-		
-		//Coisas que vou setar como default Pensando nos programadores. 
-		
+
 		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoRun",
 				Registro.REG_DWORD, "0", "0", "Não abrir o Executar"));
 		lista.add(new Registro("HKCU\\Software\\Policies\\Microsoft\\Windows\\System", "DisableCMD", Registro.REG_DWORD,
 				"0", "0", "Desativar prompt"));
 		lista.add(new Registro("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\DisallowRun",
 				"9", Registro.REG_SZ, "", "", "cmd"));
-		//Coisas que vou setar como default Pensando nos programadores. 
-		
-		
-		
+		// Coisas que vou setar como default Pensando nos programadores.
+
+		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoClose",
+				Registro.REG_DWORD, "1", "0", "Sem o Botão de Desligar no Menu Iniciar"));
+		lista.add(new Registro("HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoClose",
+				Registro.REG_DWORD, "1", "0", "Remove Opção de Desligar no Ctrl+Alt+del"));
+		lista.add(new Registro("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoLogOff",
+				Registro.REG_DWORD, "1", "0", "Remove Opção para Logoff no Ctrl+ALT+DEL"));
+		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+				"HideFastUserSwitching", Registro.REG_DWORD, "1", "0",
+				"Remove Opção para Trocar de Usuário no Ctrl+ALT+DEL"));
+		lista.add(new Registro("HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+				"DisableChangePassword", Registro.REG_DWORD, "1", "0", "Remove Opção Trocar Senha no Ctrl+ALt+DEl"));
+		lista.add(new Registro("HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+				"DisableLockWorkstation", Registro.REG_DWORD, "1", "0",
+				"Remove Opção para Bloquear este Computador no Ctrl+ALT+DEL"));
+		lista.add(new Registro("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+				"NoStartMenuMFUprogramsList", Registro.REG_DWORD, "1", "0", "Sem lista de programas no Menu Iniciar"));
+
 		lista.add(new Registro("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", "DisableTaskMgr",
 				Registro.REG_DWORD, "1", "0", "Remove Opção para Iniciar o Gerenciador de Tarefas no Ctrl+ALT+DEL"));
 		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
@@ -166,7 +160,7 @@ public class Perfil {
 				"NoProgramsAndFeatures", Registro.REG_DWORD, "1", "0",
 				"Não exibir a lista no Add ou remover programas"));
 		lista.add(new Registro("HKLM\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Restrictions", "NoFavorites",
-				Registro.REG_DWORD, "1", "0", "Não ver Favoritos do Meu Computador"));		
+				Registro.REG_DWORD, "1", "0", "Não ver Favoritos do Meu Computador"));
 		lista.add(new Registro("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", "DisableTaskMgr",
 				Registro.REG_DWORD, "1", "0", "Desativar Gerenciador de Tarefas"));
 		lista.add(new Registro("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
@@ -177,17 +171,17 @@ public class Perfil {
 				"ShellFolder", Registro.REG_DWORD, "a9400100", "a0900100", "Não ver Propriedades do Meu Computador"));
 		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoDrives",
 				Registro.REG_DWORD, "4", "0", "Não pode ver o disco C:"));
-		//Relacionado ao wallpaper
-		
+		// Relacionado ao wallpaper
+
 		lista.add(new Registro("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", "Wallpaper",
 				Registro.REG_SZ, "C:\\Windows\\Web\\Wallpaper\\Windows\\papel-de-parede.jpg",
 				"C:\\Windows\\Web\\Wallpaper\\Windows\\img0.jpg", "definir papel de parede"));
 		lista.add(new Registro("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", "WallpaperStyle",
-				Registro.REG_DWORD, "2", "0", "impede a alteração do plano de fundo"));	
+				Registro.REG_DWORD, "2", "0", "impede a alteração do plano de fundo"));
 		lista.add(new Registro("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop",
 				"NoChangingWallpaper", Registro.REG_DWORD, "1", "0", "Não altera plano de fundo"));
-		
-		//Proteção de tela
+
+		// Proteção de tela
 		lista.add(new Registro("HKCU\\Control Panel\\Desktop", "SCRNSAVE.EXE", Registro.REG_SZ,
 				"C:\\projetos\\unicafe\\projeto\\unicafeWin\\unicafe\\src\\main\\resources\\images\\UniCafe.scr",
 				"C:\\Windows\\system32\\PhotoScreensaver.scr", "Local da proteção de tela"));
@@ -201,18 +195,15 @@ public class Perfil {
 		lista.add(new Registro("HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU", "NoAutoUpdate",
 				Registro.REG_DWORD, "1", "0", "Desativar Update"));
 
-
 		lista.add(new Registro("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "DisallowRun",
 				Registro.REG_DWORD, "1", "0", "Bloqueio de Programas"));
-		
 
 		lista.add(new Registro("HKCU\\Control Panel\\Desktop", "ScreenSaveTimeOut", Registro.REG_SZ, "60", "60",
 				"Determina o tempo"));
 
-
 		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
 				"ConsentPromptBehaviorAdmin", Registro.REG_DWORD, "03", "00",
-				"Não perguntar se pode abrir coisas como admin")); //Volte aqui		
+				"Não perguntar se pode abrir coisas como admin"));
 		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", "DefaultUserName",
 				Registro.REG_SZ, ".\\unicafe", ".\\unicafe", "Login default de usuario do SO"));
 		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", "DefaultPassword",
