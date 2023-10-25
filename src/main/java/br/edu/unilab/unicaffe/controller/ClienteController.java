@@ -718,6 +718,8 @@ public class ClienteController {
 		else if (comando.equals("desligar")) {
 
 			bloqueia();
+			
+			
 			try {
 				Runtime.getRuntime().exec(" shutdown /s -t 00");
 				getFrameTelaBloqueio().setVisible(true);
@@ -1146,5 +1148,5 @@ public class ClienteController {
 	/**
 	 * Indica a versão do UniCaffé Cliente.
 	 */
-	public static final String VERSAO = "Programador 1";
+	public static final String VERSAO = "Pro-2.1";
 }
