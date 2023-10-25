@@ -118,6 +118,15 @@ public class Perfil {
 
 		}
 	}
+	
+	public static Collection<Registro> inUseList() {
+		Collection<Registro> list = new HashSet<Registro>();
+		System.out.println("CHAMEI VC");
+		list.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+				"ConsentPromptBehaviorAdmin", Registro.REG_DWORD, "03", "00",
+				"Não perguntar se pode abrir coisas como admin"));
+		return list; 
+	} 
 
 	/**
 	 *
@@ -201,9 +210,7 @@ public class Perfil {
 		lista.add(new Registro("HKCU\\Control Panel\\Desktop", "ScreenSaveTimeOut", Registro.REG_SZ, "60", "60",
 				"Determina o tempo"));
 
-		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
-				"ConsentPromptBehaviorAdmin", Registro.REG_DWORD, "03", "00",
-				"Não perguntar se pode abrir coisas como admin"));
+		
 		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", "DefaultUserName",
 				Registro.REG_SZ, ".\\unicafe", ".\\unicafe", "Login default de usuario do SO"));
 		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", "DefaultPassword",
@@ -215,6 +222,13 @@ public class Perfil {
 		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RunOnce", "unicafe",
 				Registro.REG_SZ, "C:\\Program Files\\UniCafe\\UniCafeClient.exe",
 				"C:\\Program Files\\UniCafe\\UniCafeClient.exe", "inicia Unicaffe"));
+		
+		
+
+		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+				"ConsentPromptBehaviorAdmin", Registro.REG_DWORD, "00", "00",
+				"Não perguntar se pode abrir coisas como admin"));
+		
 		return lista;
 	}
 }
