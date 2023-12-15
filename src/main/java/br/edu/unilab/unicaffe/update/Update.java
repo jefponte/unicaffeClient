@@ -82,7 +82,7 @@ public class Update {
 		janela.setVisible(true);
 
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -114,6 +114,7 @@ public class Update {
 
 		try {
 			Runtime.getRuntime().exec("./UniCafeClient.exe");
+			System.exit(0);
 		} catch (IOException e) {
 			e.printStackTrace();
 
