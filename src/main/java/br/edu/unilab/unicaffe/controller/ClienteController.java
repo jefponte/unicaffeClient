@@ -294,9 +294,19 @@ public class ClienteController {
 	 * Registros.
 	 */
 	public void bloqueiaServicos() {
+
 		Perfil perfilBloqueio = new Perfil();
 		perfilBloqueio.setListaDeRegistros(Perfil.listaParaBloqueio());
 		perfilBloqueio.executar();
+
+		Perfil perfilTemporarioExecucao = new Perfil();
+		perfilTemporarioExecucao.setListaDeRegistros(Perfil.perfilTemporarioExecucao());
+		perfilTemporarioExecucao.executar();
+
+		Perfil perfilTemporarioDesativado = new Perfil();
+		perfilTemporarioDesativado.setListaDeRegistros(Perfil.perfilTemporarioDesativado());
+		perfilTemporarioDesativado.deletar();
+
 	}
 
 	/**
@@ -365,6 +375,13 @@ public class ClienteController {
 		perfilBloqueio.setListaDeRegistros(Perfil.listaParaBloqueio());
 		perfilBloqueio.desfazer();
 
+		Perfil perfilTemporario = new Perfil();
+		perfilTemporario.setListaDeRegistros(Perfil.perfilTemporarioExecucao());
+		perfilTemporario.deletar();
+
+		Perfil perfilTemporarioDesativado = new Perfil();
+		perfilTemporarioDesativado.setListaDeRegistros(Perfil.perfilTemporarioDesativado());
+		perfilTemporarioDesativado.executar();
 	}
 
 	/**
@@ -718,8 +735,6 @@ public class ClienteController {
 		else if (comando.equals("desligar")) {
 
 			bloqueia();
-
-
 			try {
 				Runtime.getRuntime().exec(" shutdown /s -t 00");
 				getFrameTelaBloqueio().setVisible(true);
@@ -898,9 +913,9 @@ public class ClienteController {
 			}
 		});
 
-		Perfil inUseProfile = new Perfil();
-		inUseProfile.setListaDeRegistros(Perfil.inUseList());
-		inUseProfile.executar();
+		// Perfil inUseProfile = new Perfil();
+		// inUseProfile.setListaDeRegistros(Perfil.inUseList());
+		// inUseProfile.executar();
 
 		restartNoExplorer();
 		if (getCliente().getSaida() != null) {
@@ -1153,5 +1168,5 @@ public class ClienteController {
 	/**
 	 * Indica a versão do UniCaffé Cliente.
 	 */
-	public static final String VERSAO = "Pro-2.3";
+	public static final String VERSAO = "Pro v2.10";
 }
