@@ -121,10 +121,9 @@ public class Perfil {
 
 	public static Collection<Registro> inUseList() {
 		Collection<Registro> list = new HashSet<Registro>();
-		System.out.println("CHAMEI VC");
-		list.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
-				"ConsentPromptBehaviorAdmin", Registro.REG_DWORD, "03", "00",
-				"Não perguntar se pode abrir coisas como admin"));
+//		list.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+//				"ConsentPromptBehaviorAdmin", Registro.REG_DWORD, "03", "00",
+//				"Não perguntar se pode abrir coisas como admin"));
 		return list;
 	}
 
@@ -142,10 +141,11 @@ public class Perfil {
 				"0", "0", "Desativar prompt"));
 		lista.add(new Registro("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\DisallowRun",
 				"9", Registro.REG_SZ, "", "", "cmd"));
+		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoClose",
+				Registro.REG_DWORD, "0", "0", "Sem o Botão de Desligar no Menu Iniciar"));
 		// Coisas que vou setar como default Pensando nos programadores.
 
-		lista.add(new Registro("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoClose",
-				Registro.REG_DWORD, "1", "0", "Sem o Botão de Desligar no Menu Iniciar"));
+		
 		lista.add(new Registro("HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoClose",
 				Registro.REG_DWORD, "1", "0", "Remove Opção de Desligar no Ctrl+Alt+del"));
 		lista.add(new Registro("HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "NoLogOff",
