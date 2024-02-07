@@ -1153,5 +1153,5 @@ public class ClienteController {
 	/**
 	 * Indica a versão do UniCaffé Cliente.
 	 */
-	public static final String VERSAO = "Prog-2.5";
+	public static final String VERSAO = "Prog-2.8";
 }

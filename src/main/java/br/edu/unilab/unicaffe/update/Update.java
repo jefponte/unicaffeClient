@@ -1,10 +1,12 @@
 package br.edu.unilab.unicaffe.update;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -87,6 +89,7 @@ public class Update {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
 		try {
 			conexao = new Socket(this.host, this.porta);
 			PrintStream saida = new PrintStream(conexao.getOutputStream());
@@ -103,25 +106,22 @@ public class Update {
 			}
 			out.flush();
 			out.close();
-
+			
+			
 			janela.setVisible(false);
-
+			Runtime.getRuntime().exec("java -jar ./UniCafeClient.exe");
+			
 		} catch (UnknownHostException e1) {
+			System.exit(0);
 			e1.printStackTrace();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 
-		try {
-			Runtime.getRuntime().exec("./UniCafeClient.exe");
-			System.exit(0);
-		} catch (IOException e) {
-			e.printStackTrace();
 
-		}
 
 	}
-
+   
 	/**
 	 * Atribui ao host e à porta os valores contidos no arquivo de configuração.
 	 */
