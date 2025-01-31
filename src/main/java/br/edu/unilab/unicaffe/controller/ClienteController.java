@@ -1134,13 +1134,13 @@ public class ClienteController {
 	 * Host do servidor primário. É o primeiro que o cliente tenta conexões.
 	 */
 
-	public static String servidorPrimario = "200.129.19.40";
+	public static String servidorPrimario = "unicaffe-server.unilab.edu.br";
 
 	/**
 	 * Host do servidor secundário. É o segundo que o cliente tenta conexões.
 	 */
 
-	public static String servidorSecundario = "200.128.19.10";
+	public static String servidorSecundario = "unicaffe-server.unilab.edu.br";
 	/**
 	 * Porta do servidor primário.
 	 */
@@ -1153,5 +1153,5 @@ public class ClienteController {
 	/**
 	 * Indica a versão do UniCaffé Cliente.
 	 */
-	public static final String VERSAO = "Prog-2.8";
+	public static final String VERSAO = "Prog-3.0.1";
 }

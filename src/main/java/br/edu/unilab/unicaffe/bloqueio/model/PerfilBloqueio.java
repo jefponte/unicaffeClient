@@ -218,6 +218,10 @@ public class PerfilBloqueio {
 
 	public boolean isAllowedPath(String path) {
 		String[] allowedPaths = {
+				"C:\\Windows\\System32\\dsregcmd.exe",
+				"C:\\Windows\\system32\\msiexec.exe",
+				"C:\\Windows\\syswow64\\MsiExec.exe",
+				"C:\\eclipse\\eclipse.exe",
 				"C:\\windows\\servic",
 				"c:\\progra",
 				"c:\\positivo",
