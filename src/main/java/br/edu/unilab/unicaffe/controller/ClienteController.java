@@ -172,8 +172,8 @@ public class ClienteController {
 			try {
 				file = new FileInputStream(arquivo);
 				config.load(file);
-				servidorPrimario = config.getProperty("host_servidor_primario");
-				servidorSecundario = config.getProperty("host_servidor_secundario");
+				servidorPrimario = "unicaffe-server.unilab.edu.br";
+				servidorSecundario = "unicaffe-server.unilab.edu.br";
 				portaServidorPrimario = Integer.parseInt(config.getProperty("porta_servidor_primario"));
 				portaServidorSecundario = Integer.parseInt(config.getProperty("porta_servidor_secundario"));
 
